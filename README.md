@@ -214,8 +214,8 @@ query {
 - `walletSummary(startDate, endDate)`: Get total expenses, incomes, net amount, and savings rate for a period.
 - `periodAnalytics(year, month?)`: Get analytics for a specific year or month.
 - `monthlyComparison(year)`: Compare analytics month-by-month for a year.
-- 
-- 
+-
+-
 
 ## Project Structure
 
