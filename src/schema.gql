@@ -1,0 +1,158 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Category {
+  color: String!
+  createdAt: DateTime!
+  description: String
+  expenses: [Expense!]
+  id: ID!
+  incomes: [Income!]
+  name: String!
+  type: String!
+  updatedAt: DateTime!
+}
+
+input CreateCategoryInput {
+  color: String! = "#3B82F6"
+  description: String
+  name: String!
+  type: String! = "both"
+}
+
+input CreateExpenseInput {
+  amount: Float!
+  categoryId: String!
+  date: DateTime!
+  description: String!
+  notes: String
+}
+
+input CreateIncomeInput {
+  amount: Float!
+  categoryId: String!
+  date: DateTime!
+  description: String!
+  notes: String
+}
+
+type DatePeriod {
+  endDate: DateTime!
+  startDate: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Expense {
+  amount: Float!
+  category: Category!
+  createdAt: DateTime!
+  date: DateTime!
+  description: String!
+  id: ID!
+  notes: String
+  updatedAt: DateTime!
+}
+
+input ExpenseFiltersInput {
+  categoryId: ID
+  description: String
+  endDate: DateTime
+  maxAmount: Float
+  minAmount: Float
+  startDate: DateTime
+}
+
+type Income {
+  amount: Float!
+  category: Category!
+  createdAt: DateTime!
+  date: DateTime!
+  description: String!
+  id: ID!
+  notes: String
+  updatedAt: DateTime!
+}
+
+input IncomeFiltersInput {
+  categoryId: ID
+  description: String
+  endDate: DateTime
+  maxAmount: Float
+  minAmount: Float
+  startDate: DateTime
+}
+
+type Mutation {
+  createCategory(createCategoryInput: CreateCategoryInput!): Category!
+  createExpense(createExpenseInput: CreateExpenseInput!): Expense!
+  createIncome(createIncomeInput: CreateIncomeInput!): Income!
+  removeCategory(id: ID!): Boolean!
+  removeExpense(id: ID!): Boolean!
+  removeIncome(id: ID!): Boolean!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
+  updateExpense(updateExpenseInput: UpdateExpenseInput!): Expense!
+  updateIncome(updateIncomeInput: UpdateIncomeInput!): Income!
+}
+
+type PeriodAnalytics {
+  month: Int
+  period: DatePeriod!
+  summary: WalletSummary!
+  year: Int!
+}
+
+type Query {
+  categories: [Category!]!
+  categoriesByType(type: String!): [Category!]!
+  category(id: ID!): Category!
+  expense(id: ID!): Expense!
+  expenses(filters: ExpenseFiltersInput): [Expense!]!
+  income(id: ID!): Income!
+  incomes(filters: IncomeFiltersInput): [Income!]!
+  monthlyComparison(year: Int!): [PeriodAnalytics!]!
+  periodAnalytics(month: Int, year: Int!): PeriodAnalytics!
+  totalExpensesByCategory(categoryId: ID!, endDate: DateTime, startDate: DateTime): Float!
+  totalExpensesByPeriod(endDate: DateTime!, startDate: DateTime!): Float!
+  totalIncomesByCategory(categoryId: ID!, endDate: DateTime, startDate: DateTime): Float!
+  totalIncomesByPeriod(endDate: DateTime!, startDate: DateTime!): Float!
+  walletSummary(endDate: DateTime!, startDate: DateTime!): WalletSummary!
+}
+
+input UpdateCategoryInput {
+  color: String = "#3B82F6"
+  description: String
+  id: ID!
+  name: String
+  type: String = "both"
+}
+
+input UpdateExpenseInput {
+  amount: Float
+  categoryId: String
+  date: DateTime
+  description: String
+  id: ID!
+  notes: String
+}
+
+input UpdateIncomeInput {
+  amount: Float
+  categoryId: String
+  date: DateTime
+  description: String
+  id: ID!
+  notes: String
+}
+
+type WalletSummary {
+  netAmount: Float!
+  period: DatePeriod!
+  savingsRate: Float!
+  totalExpenses: Float!
+  totalIncomes: Float!
+}

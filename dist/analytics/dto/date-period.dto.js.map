@@ -1,0 +1,1 @@
+{"version":3,"file":"date-period.dto.js","sourceRoot":"","sources":["../../../src/analytics/dto/date-period.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAAoD;AAG7C,IAAM,UAAU,GAAhB,MAAM,UAAU;CAMtB,CAAA;AANY,gCAAU;AAErB;IADC,IAAA,eAAK,GAAE;8BACG,IAAI;6CAAC;AAGhB;IADC,IAAA,eAAK,GAAE;8BACC,IAAI;2CAAC;qBALH,UAAU;IADtB,IAAA,oBAAU,GAAE;GACA,UAAU,CAMtB"}
